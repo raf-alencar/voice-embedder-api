@@ -1,0 +1,19 @@
+services:
+  voice-embedder:
+    build: .
+    container_name: voice-embedder
+    restart: unless-stopped
+    ports:
+      - "8555:8000"
+    environment:
+      - EMBED_DEVICE=cpu
+    # To use GPU:
+    #   - EMBED_DEVICE=cuda
+    # and add:
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: 1
+    #           capabilities: [gpu]
